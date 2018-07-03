@@ -46,11 +46,4 @@ query LayoutQuery {
       }
     }
   }
-query SiteDataQuery {
-  site {
-    siteMetadata {
-      title
-    }
-  }
-}
 `;
