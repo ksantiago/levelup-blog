@@ -1,15 +1,19 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 
 import googleLogo from '../images/google-logo.svg';
 
 const HeaderWrapper = styled.div`
   background: #191970;
   margin-bottom: 1.45rem;
+  overflow: hidden;
+  position: relative;
+  height: 60vh;
   h1 {
     img {
-      height: 100px;
+      height: 80px;
     }
 
   }
@@ -19,8 +23,15 @@ const HeaderContainer = styled.div`
   margin: 0 auto;
   max-width: 960;
   padding: 1.45rem 1.0875rem;
+  position: relative;
+  z-index: 2;
 `;
 
+const Billboard = styled(Img)`
+  margin: 0 auto;
+  max-width: 960;
+  padding: 1.45rem 1.0875rem;
+`;
 
 
 const Header = ({ data, siteTitle }) => (
@@ -45,6 +56,16 @@ const Header = ({ data, siteTitle }) => (
       </h1>
 
     </HeaderContainer>
+    <Img 
+      style={{
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        width: '100%',
+        height: '100%'
+      }}
+      sizes={data.background.sizes} 
+    />
     <nav>
       <ul>
         <li>
@@ -54,8 +75,6 @@ const Header = ({ data, siteTitle }) => (
           <Link to="/about">About</Link>
         </li>
       </ul>
-      <p>{data.site.siteMetadata.title}</p>
-      <p>{data.site.siteMetadata.desc}</p>
     </nav>
   </HeaderWrapper>
 )
